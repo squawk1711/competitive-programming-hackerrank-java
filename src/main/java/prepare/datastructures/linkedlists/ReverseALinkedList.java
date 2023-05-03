@@ -1,0 +1,56 @@
+package prepare.datastructures.linkedlists;
+
+public class ReverseALinkedList {
+
+    class SinglyLinkedListNode {
+        public int data;
+        public SinglyLinkedListNode next;
+
+        public SinglyLinkedListNode(int nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    }
+
+    class SinglyLinkedList {
+        public SinglyLinkedListNode head;
+        public SinglyLinkedListNode tail;
+
+        public SinglyLinkedList() {
+            this.head = null;
+            this.tail = null;
+        }
+
+        public void insertNode(int nodeData) {
+            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+            if (this.head == null) {
+                this.head = node;
+            } else {
+                this.tail.next = node;
+            }
+
+            this.tail = node;
+        }
+    }
+
+    class Result {
+
+        public static SinglyLinkedListNode reverse(SinglyLinkedListNode llist) {
+
+            SinglyLinkedListNode prev = null;
+            SinglyLinkedListNode current = llist;
+            SinglyLinkedListNode next = null;
+
+            while (current != null) {
+
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+
+            return prev;
+        }
+    }
+}
